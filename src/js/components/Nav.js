@@ -1,9 +1,9 @@
 import React from "react";
 
 const NavItem = ({ item }) =>
-  <a href={ item.url }>
-    <li className="nav__item">{ item.name }</li>
-  </a>;
+  <li className="nav__item">
+    <a href={ item.url }>{ item.name }</a>
+  </li>;
 
 const navItem = (item, idx) => {
   return (<NavItem key={ idx } item={ item } />);

@@ -1,9 +1,10 @@
 const autoprefixer = require('autoprefixer');
+const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const lost = require("lost");
 const path = require("path");
 const postcssImport = require('postcss-import');
 const precss = require("precss");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
 const webpack = require("webpack");
 
 const root = path.resolve(__dirname, "../");
@@ -115,7 +116,7 @@ module.exports = {
         },
         {
           test: /\.(png|jpe?g|gif|svg|otf|eot|woff2?|ttf)$/,
-          loader: 'url',
+          loader: 'file',
           query: {
             name: "[name].[hash].[ext]",
           }
@@ -128,6 +129,7 @@ module.exports = {
       return [
         autoprefixer,
         precss,
+        lost,
         postcssImport({ addDependencyTo: webpack })
       ];
     },
